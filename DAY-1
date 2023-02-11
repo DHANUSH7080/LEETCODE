@@ -1,0 +1,37 @@
+vector<int> subarraySum(vector<int>arr, int n, long long s)
+    {
+        int i=0,j=0;
+        int sum=arr[0];
+        vector<int>answer;
+        
+        while(j<n)
+        {
+             if(s<=0)
+            {
+            answer.push_back(-1);
+            return answer;
+            continue;
+            }
+            if(sum==s)
+            {
+                answer.push_back(i+1);
+                answer.push_back(j+1);
+                return answer;
+            }
+            if(sum<s)
+            {
+                j++;
+                sum += arr[j];
+                continue;
+            }
+            if(sum>s)
+            {
+                sum -= arr[i];
+                i++;
+                continue;
+            }
+           
+        }
+        answer.push_back(-1);
+        return answer;
+    }
